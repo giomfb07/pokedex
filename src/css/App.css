@@ -1,0 +1,260 @@
+/* ===== Layout geral ===== */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+header {
+  background: #d9262c;
+  color: white;
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav button {
+  background: white;
+  color: #d9262c;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+nav button.ativo {
+  background: #222;
+  color: white;
+}
+
+/* =====Pesquisa e filtro ===== */
+
+.controles {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 8px;
+  flex-wrap: wrap;
+}
+
+.busca,
+.filtro {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+}
+
+.busca {
+  flex: 1;
+  min-width: 200px;
+}
+
+.contador {
+  color: #666;
+  margin: 4px 0 12px;
+}
+
+.vazio {
+  text-align: center;
+  font-size: 20px;
+  margin: 40px 0;
+}
+
+/* ===== Lista e cards ===== */
+.lista {
+  display: grid;
+  /* auto-fill: o número de colunas se ajusta sozinho à largura da tela (responsivo) */
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.card h3 {
+  margin: 4px 0 8px;
+}
+
+.card-id {
+  float: left;
+  color: #888;
+  font-size: 13px;
+}
+
+.card-stats {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  font-size: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 8px;
+  text-align: left;
+}
+
+/* ===== Etiquetas de tipo ===== */
+
+.tipos {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tipo {
+  color: white;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Modal de detalhes ===== */
+.modal-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 10;
+}
+
+.modal {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 95vh;
+  overflow-y: auto;
+  text-align: center;
+  position: relative;
+}
+
+.modal img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: #eee;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+/* ===== Barras de atributos ===== */
+.barras {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.barra-linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.barra-nome {
+  width: 120px;
+}
+
+.barra-fundo {
+  flex: 1;
+  background: #e5e5e5;
+  border-radius: 6px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.barra-valor {
+  height: 100%;
+  background: #4caf50;
+}
+
+.barra-numero {
+  width: 32px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.donos {
+  margin-top: 14px;
+  color: #555;
+  font-size: 14px;
+}
+
+/* =====Treinadores ===== */
+.treinadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.treinador {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.treinador h3 {
+  margin: 0 0 4px;
+}
+
+.treinador p {
+  margin: 0 0 8px;
+}
+
+.miniaturas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.miniaturas img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: #f2f2f2;
+  border-radius: 8px;
+  cursor: pointer;
+}
