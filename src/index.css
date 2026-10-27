@@ -1,0 +1,43 @@
+/* Estilos globais: cores, fontes e regras básicas (as cores são variáveis CSS). */
+:root {
+  --fundo: #e8edf3;
+  --superficie: #ffffff;
+  --superficie-2: #f1f4f8;
+  --texto: #14202e;
+  --texto-suave: #55657a;
+  --borda: #cfd8e3;
+  --concha: #d62839;        /* vermelho do aparelho */
+  --concha-escura: #8e1522;
+  --lente: #35c8f2;
+  --foco: #1b6ef3;
+  --fonte-titulo: "Chakra Petch", "Nunito", system-ui, sans-serif;
+  --fonte-texto: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.4;
+}
+
+/* Contorno visível ao navegar com o teclado */
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 2px;
+}
+
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

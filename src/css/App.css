@@ -1,0 +1,528 @@
+/* ===== Layout geral ===== */
+.app {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 16px 40px;
+}
+
+/* ===== Cabeçalho (aparelho Pokédex) ===== */
+.topo {
+  background: var(--concha);
+  border-bottom: 6px solid var(--concha-escura);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topo h1 {
+  margin: 2px 0 0;
+  font-family: var(--fonte-titulo);
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+/* A lente azul do aparelho: é o destaque visual da página */
+.lente {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  background: radial-gradient(circle at 32% 30%, #d4f6ff 0 9%, var(--lente) 34%, #0b6fa0 100%);
+  box-shadow: 0 0 0 4px var(--concha-escura), inset 0 -5px 9px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+/* As três luzes acendem em sequência quando a página abre */
+.leds {
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4); /* fundo escuro para as luzes aparecerem sobre o vermelho */
+}
+
+.led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 8px currentColor;
+  animation: acender 0.4s backwards;
+}
+.led:nth-child(1) { animation-delay: 0.1s; }
+.led:nth-child(2) { animation-delay: 0.4s; }
+.led:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes acender {
+  from {
+    opacity: 0.2;
+    box-shadow: none;
+  }
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.aba {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font: 700 14px var(--fonte-texto);
+}
+
+.aba:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.aba.ativo {
+  background: #0c1522;
+  border-color: #0c1522;
+}
+
+/* ===== Pesquisa, ordenação e botões ===== */
+.controles {
+  display: flex;
+  gap: 10px;
+  margin: 18px 0 12px;
+  flex-wrap: wrap;
+}
+
+.campo {
+  padding: 10px 12px;
+  font: 16px var(--fonte-texto);
+  background: var(--superficie);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+}
+
+.busca {
+  flex: 1;
+  min-width: 220px;
+}
+
+.botao {
+  padding: 10px 14px;
+  background: var(--superficie);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  font: 700 14px var(--fonte-texto);
+  cursor: pointer;
+}
+
+.botao:hover:not(:disabled) {
+  border-color: var(--concha);
+}
+
+.botao.ativo {
+  background: var(--concha);
+  border-color: var(--concha);
+  color: #fff;
+}
+
+.botao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Filtro por tipo (chips) ===== */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 4px 12px;
+  border: 2px solid var(--cor);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texto);
+  font: 700 13px var(--fonte-texto);
+  cursor: pointer;
+}
+
+.chip.ativo {
+  background: var(--cor);
+  color: var(--cor-texto);
+}
+
+.contador {
+  color: var(--texto-suave);
+  margin: 14px 0 12px;
+}
+
+.vazio {
+  text-align: center;
+  font-size: 18px;
+  margin: 48px auto;
+  max-width: 420px;
+  color: var(--texto-suave);
+}
+
+/* ===== Lista e cards ===== */
+.lista {
+  display: grid;
+  /* auto-fill: o número de colunas se ajusta sozinho à largura da tela (responsivo) */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  position: relative;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-top: 5px solid var(--cor);
+  border-radius: 14px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.card-abrir {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 14px;
+}
+
+.card-id {
+  align-self: flex-start;
+  font: 600 13px var(--fonte-titulo);
+  color: var(--texto-suave);
+}
+
+.img-card {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.card-nome {
+  font: 600 19px var(--fonte-titulo);
+}
+
+.card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 10px;
+  width: 100%;
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: left;
+  color: var(--texto-suave);
+}
+
+.card-stats b {
+  color: var(--texto);
+  font-family: var(--fonte-titulo);
+  float: right;
+}
+
+.card-acoes {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.icone-botao {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--borda);
+  background: var(--superficie);
+  color: var(--texto-suave);
+  font-size: 15px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.icone-botao.ativo {
+  background: var(--concha);
+  border-color: var(--concha);
+  color: #fff;
+}
+
+/* Imagem que não carregou: mostra um quadrado com "?" */
+.imagem-falha {
+  display: grid;
+  place-items: center;
+  background: var(--superficie-2);
+  border-radius: 12px;
+  color: var(--texto-suave);
+  font: 700 32px var(--fonte-titulo);
+}
+
+/* ===== Etiquetas de tipo ===== */
+.tipos {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tipo {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+/* ===== Modal de detalhes ===== */
+.modal-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  z-index: 10;
+}
+
+.modal {
+  position: relative;
+  background: var(--superficie);
+  color: var(--texto);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 440px;
+  max-height: 95vh;
+  overflow-y: auto;
+  animation: abrir 0.18s ease-out;
+}
+
+@keyframes abrir {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.modal-topo {
+  text-align: center;
+  padding: 24px 20px 12px;
+  background: linear-gradient(170deg, color-mix(in srgb, var(--cor) 55%, transparent), transparent);
+}
+
+.modal-topo h2 {
+  margin: 4px 0 8px;
+  font: 700 26px var(--fonte-titulo);
+}
+
+.modal-id {
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+.modal-corpo {
+  padding: 0 20px 20px;
+}
+
+.img-modal {
+  width: 190px;
+  height: 190px;
+  object-fit: contain;
+}
+
+.fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  border: 0;
+  background: var(--superficie-2);
+  color: var(--texto);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+/* ===== Barras de atributos ===== */
+.barra-linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+  font-size: 14px;
+}
+
+.barra-nome {
+  width: 125px;
+  color: var(--texto-suave);
+}
+
+.barra-fundo {
+  flex: 1;
+  background: var(--superficie-2);
+  border-radius: 6px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.barra-valor {
+  height: 100%;
+  border-radius: 6px;
+  transform-origin: left;
+  animation: crescer 0.5s ease-out;
+}
+
+@keyframes crescer {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.barra-numero {
+  width: 36px;
+  text-align: right;
+  font: 700 15px var(--fonte-titulo);
+}
+
+.barra-linha.total {
+  border-top: 1px solid var(--borda);
+  padding-top: 8px;
+  margin-top: 4px;
+  justify-content: space-between;
+}
+
+.donos {
+  margin: 14px 0 0;
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+/* ===== Treinadores ===== */
+.treinadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.treinador {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-left: 5px solid var(--concha);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.treinador h3 {
+  margin: 0 0 4px;
+  font: 700 20px var(--fonte-titulo);
+}
+
+.treinador p {
+  margin: 0 0 10px;
+  color: var(--texto-suave);
+}
+
+.miniaturas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.mini {
+  padding: 0;
+  border: 0;
+  background: var(--superficie-2);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.mini:hover {
+  background: color-mix(in srgb, var(--concha) 18%, var(--superficie-2));
+}
+
+.img-mini {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+}
+
+.img-mini.imagem-falha {
+  font-size: 20px;
+}
+
+/* ===== Telas pequenas (celular) ===== */
+@media (max-width: 600px) {
+  .topo h1 {
+    font-size: 26px;
+  }
+
+  .lista {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .img-card {
+    width: 96px;
+    height: 96px;
+  }
+
+  .card-stats {
+    font-size: 11px;
+  }
+
+  .barra-nome {
+    width: 100px;
+  }
+
+  .controles .campo {
+    flex: 1 1 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .controles .botao {
+    flex: 1 1 40%;
+  }
+}

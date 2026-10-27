@@ -1,0 +1,8 @@
+# Dependências e build (não devem ir para o GitHub)
+node_modules
+dist
+
+# Sistema e logs
+.DS_Store
+*.log
+.env
